@@ -6,14 +6,14 @@ const BOT_SECRET = "Persija"; // Insert a powerful secret text (only [A-Z, a-z, 
 const BOT_OWNER = 7973732709; // Insert your telegram account id.
 const BOT_CHANNEL = -1002684136984; // Insert your telegram channel id which the bot is admin in.
 const SIA_SECRET = "ryBL52xFqWYffPKK446k"; // Insert a powerful secret text and keep it safe.
-const PUBLIC_BOT = false; // Make your bot public (only [true, false] are allowed).
+const PUBLIC_BOT = true; // Make your bot public (only [true, false] are allowed).
 
 // ---------- Do Not Modify ---------- // 
 
 const WHITE_METHODS = ["GET", "POST", "HEAD"];
 const HEADERS_FILE = {"Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET, HEAD, POST, OPTIONS", "Access-Control-Allow-Headers": "Content-Type"};
 const HEADERS_ERRR = {'Access-Control-Allow-Origin': '*', 'content-type': 'application/json'};
-const ERROR_404 = {"ok":false,"error_code":404,"description":"Bad Request: missing /?file= parameter", "credit": "https://github.com/vauth/filestream-cf"};
+const ERROR_404 = {"ok":false,"error_code":404,"description":"Bad Request: missing /?file= parameter", "credit": "https://github.com/weaboify/filestream-cf"};
 const ERROR_405 = {"ok":false,"error_code":405,"description":"Bad Request: method not allowed"};
 const ERROR_406 = {"ok":false,"error_code":406,"description":"Bad Request: file type invalid"};
 const ERROR_407 = {"ok":false,"error_code":407,"description":"Bad Request: file hash invalid by atob"};
@@ -294,7 +294,7 @@ async function onInline(event, inline) {
   let  fID; let fName; let fType; let fSize; let fLen;
 
   if (!PUBLIC_BOT && inline.from.id != BOT_OWNER) {
-    const buttons = [[{ text: "Source Code", url: "https://github.com/vauth/filestream-cf" }]];
+    const buttons = [[{ text: "Source Code", url: "https://github.com/weaboify/filestream-cf" }]];
     return await Bot.answerInlineArticle(inline.id, "Access forbidden", "Deploy your own filestream-cf.", "*❌ Access forbidden.*\n📡 Deploy your own [filestream-cf](https://github.com/vauth/filestream-cf) bot.", buttons)
   }
  
@@ -308,7 +308,7 @@ async function onInline(event, inline) {
   const data = await Bot.editMessage(channel_id, message_id, await UUID());
 
   if (data.error_code){
-    const buttons = [[{ text: "Source Code", url: "https://github.com/vauth/filestream-cf" }]];
+    const buttons = [[{ text: "Source Code", url: "https://github.com/weaboify/filestream-cf" }]];
     return await Bot.answerInlineArticle(inline.id, "Error", data.description, data.description, buttons)
   }
 
@@ -391,7 +391,7 @@ async function onMessage(event, message) {
   }
 
   if (!PUBLIC_BOT && message.chat.id != BOT_OWNER) {
-    const buttons = [[{ text: "Source Code", url: "https://github.com/vauth/filestream-cf" }]];
+    const buttons = [[{ text: "Source Code", url: "https://github.com/weaboify/filestream-cf" }]];
     return Bot.sendMessage(message.chat.id, message.message_id, "*❌ Access forbidden.*\n📡 Deploy your own [filestream-cf](https://github.com/vauth/filestream-cf) bot.", buttons)
   }
 
@@ -416,7 +416,7 @@ async function onMessage(event, message) {
     fType = "image/jpg".split("/")[0];
     fSave = await Bot.sendPhoto(BOT_CHANNEL, fID)
   } else {
-    const buttons = [[{ text: "Source Code", url: "https://github.com/vauth/filestream-cf" }]];
+    const buttons = [[{ text: "Source Code", url: "https://github.com/weaboify/filestream-cf" }]];
     return Bot.sendMessage(message.chat.id, message.message_id, "Send me any file/video/gif/audio *(t<=4GB, e<=20MB)*.", buttons)
   }
 
